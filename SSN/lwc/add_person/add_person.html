@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="New Person">
+
+        <div class="slds-wrap slds-grid">
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium"><p><lightning-input label="FirstName" type="text" value={personObjectFirstName} name="pesonFirstName" onchange={personHandleChange}></lightning-input></p></div>         
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium"><p><lightning-input label="MiddleName" type="text" value={personObjectMiddleName} name="pesonMiddleName" onchange={personHandleChange}></lightning-input></p></div>         
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium"><p><lightning-input label="LastName" type="text" value={personObjectLastName} name="pesonLastName" onchange={personHandleChange}></lightning-input></p></div>         
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium"><p><lightning-input label="Email" type="email" value={personObjectEmail} name="pesonEmail" onchange={personHandleChange}></lightning-input></p></div>         
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium"><p><lightning-input label="Mobile" type="Number" value={personObjectPhone} name="pesonPhone" onchange={personHandleChange}></lightning-input></p></div>         
+             <br/>  <br/>
+            <div class="slds-text-align--center slds-m-top--medium" style="text-align:center; width:40px; margin:auto;">
+                <lightning-button type="brand" label="Submit" variant="brand" size="small" onclick={submitAction}></lightning-button>
+            </div>
+       </div>
+
+        <br/><br/>
+    </lightning-card>
+</template>
