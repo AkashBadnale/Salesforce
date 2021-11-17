@@ -1,0 +1,26 @@
+<template>
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Person Records">
+
+        <thead>
+        <tr class="slds-line-height_reset">
+        <th class="" scope="col"> <div class="slds-truncate" title="Name">NAME</div> </th>
+        <th class="" scope="col"> <div class="slds-truncate" title="Email">EMAIL</div> </th>
+        </tr>
+        </thead>
+        
+        <tbody>
+        <template iterator:it={wiredPersons.data}>
+        <tr class="slds-hint-parent" key = {it.value.id}>
+                               <td data-label="Name">
+                                    <div class="slds-cell-wrap">{it.value.First_Name__c} {it.value.Last_Name__c}</div>
+                                </td>
+                                <td data-label="Email">
+                                    <div class="slds-cell-wrap">{it.value.Email__c}</div>
+                                </td>
+        </tr>
+        </template>
+        </tbody>
+        
+        </table>
+</template>
