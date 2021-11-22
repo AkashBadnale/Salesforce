@@ -14,6 +14,6 @@ export default class Test extends LightningElement {
 
     handleClick(event)
     {
-        addTest({firstName:this.firstName,lastName:this.lastName});
+        addTest({name:this.firstName,surname:this.lastName});
     }
 }
