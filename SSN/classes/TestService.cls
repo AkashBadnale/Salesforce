@@ -7,6 +7,9 @@ public with sharing class TestService {
             Test__c test = new Test__c();
             test.name__c=name;
             test.surname__c=surname;
+
+            System.debug('-----------'+name+'-----------'+surname);
+            
             insert test;
             return 'SUCCESS';
         
