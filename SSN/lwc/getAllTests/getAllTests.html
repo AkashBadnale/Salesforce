@@ -1,0 +1,10 @@
+<template>
+    <div class="list_name">TESTS</div>
+    <template for:each={records.data} for:item="record">
+        <!-- always provide unique value for key attribute -->
+        <p key={record.Name}>
+          {record.Name__c} 
+          {record.Surname__c}
+        </p>
+      </template>
+</template>
