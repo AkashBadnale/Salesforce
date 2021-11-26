@@ -1,0 +1,8 @@
+.THIS .header {
+    width: auto;
+    height: 1cm
+}
+.THIS .name {
+    font-weight: bolder;
+    color: orangered;
+}
