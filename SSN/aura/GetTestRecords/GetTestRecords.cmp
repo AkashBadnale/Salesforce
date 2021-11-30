@@ -1,0 +1,51 @@
+<aura:component controller="TestService" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="testRecords" type="String[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <br/> <br/>
+    
+    <div class="slds">
+        <div style="font-size:18px;font-weight:bold;margin-left:20px">Test List</div>
+        <br/> <br/>
+
+        <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+            
+            <thead>
+              <tr class="slds-text-heading_label">
+                <th scope="col"><div class="slds-truncate" title="Name">Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Surname">Surname</div></th>
+                <th scope="col"><div class="slds-truncate" title="Education">Education</div></th>
+                <th scope="col"><div class="slds-truncate" title="Jobs">Jobs</div></th>
+                <th scope="col"><div class="slds-truncate" title="Favorites">Fav</div></th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+              <aura:iteration items="{!v.testRecords}" var="test">
+                <tr>
+                  <td><div class="slds-truncate" title="{!test.Name__c}" data-target="{!test.Name}">{!test.Name__c}</div></td>
+                  <td><div class="slds-truncate" title="{!test.Surname__c}">{!test.Surname__c}</div></td>
+                  <td>  <div class="slds-truncate">
+                    <aura:iteration items="{!test.Education__r}" var="education">
+                       <p>{!education.Name}</p>
+                    </aura:iteration> </div>
+                  </td>
+                  <td>  <div class="slds-truncate">
+                    <aura:iteration items="{!test.Jobs__r}" var="job">
+                       <p>{!job.Name}</p>
+                    </aura:iteration> </div>
+                  </td>
+                  <td>  <div class="slds-truncate">
+                    <aura:iteration items="{!test.Tests_N_Favorites__r}" var="favs">
+                       <p>{!favs.Favorite_Id__c}</p>
+                    </aura:iteration> </div>
+                  </td>
+                </tr>
+              </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+
+    
+</aura:component>	
