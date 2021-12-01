@@ -1,4 +1,4 @@
-    public with sharing class TestService {
+public with sharing class TestService {
         public TestService() { }
 
         @AuraEnabled
@@ -22,5 +22,47 @@
         public static List<Test__c> getTests() {
                 return [SELECT name__c, surname__c FROM Test__c];
         }
+
+        @AuraEnabled(cacheable=true)
+        public static List<Test__c> getTestsAndRelatedData() {
+                return [SELECT 
+                          Name,
+                          Name__c, 
+                          Surname__c, 
+                          ( SELECT Name FROM Education__r), 
+                          ( SELECT Name , Organization__r.Name FROM Jobs__r), 
+                          ( SELECT Favorite_Id__c FROM Tests_N_Favorites__r) 
+                        FROM 
+                          Test__c];
+        }
+
         
+
+        @AuraEnabled(cacheable=true)
+        public static List<Education__c> getTestRelatedEducation(String test) {
+                System.debug('%%%%%%%%%%'+test+'%%%%%%%%%%%%');
+                /** 
+                return [
+                        SELECT Id, Degree__c, Diploma__c, Higher_Secondary__c, Senior_Secondary__c 
+                        FROM Education__c
+                        WHERE Test__c=:test
+                ]; */
+
+                Education__c e1 = new Education__c();
+                e1.Senior_Secondary__c = 'Saraswati Vidyalaya';
+                e1.Higher_Secondary__c = 'Jaykranti Junior College';
+                e1.Diploma__c = '';
+                e1.Degree__c = 'BCA';
+                Education__c e2 = new Education__c();
+                e2.Senior_Secondary__c = 'JNV Latur';
+                e2.Higher_Secondary__c = 'JNV Latur';
+                e2.Diploma__c = '';
+                e2.Degree__c = 'BTECH';
+
+                List<Education__c> eList = new List<Education__c>();
+                eList.add(e1);
+                eList.add(e2);
+
+                return eList;
+        }
     }
