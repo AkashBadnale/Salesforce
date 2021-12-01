@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="TestService">
+    <aura:handler event="c:DataForDetails" action="{!c.dataHandleEvent}"/>    
+    <p>Details</p>
+    <aura:attribute name="eduRecords" type="String[]" />
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+
+    <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+            
+        <thead>
+          <tr class="slds-text-heading_label">
+            <th scope="col"><div class="slds-truncate" title="SSC">SSC</div></th>
+            <th scope="col"><div class="slds-truncate" title="HSC">HSC</div></th>
+            <th scope="col"><div class="slds-truncate" title="Diploma">Diploma</div></th>
+            <th scope="col"><div class="slds-truncate" title="Degree">Degree</div></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        <!-- Use the Apex model and controller to fetch server side data -->
+          <aura:iteration items="{!v.eduRecords}" var="education">
+            <tr>
+              <td><div class="slds-truncate" title="{!education.Senior_Secondary__c}">{!education.Senior_Secondary__c}</div></td>
+              <td><div class="slds-truncate" title="{!education.Higher_Secondary__c}">{!education.Higher_Secondary__c}</div></td>
+              <td><div class="slds-truncate" title="{!education.Diploma__c}">{!education.Diploma__c}</div></td>
+              <td><div class="slds-truncate" title="{!education.Degree__c}">{!education.Degree__c}</div></td>
+            </tr>
+          </aura:iteration>
+        </tbody>
+    </table>
+
+</aura:component>	

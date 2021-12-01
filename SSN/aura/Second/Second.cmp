@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <p>Second Aura Component</p>
+    <aura:attribute name="eventMessage" type="String"/>
+    <aura:handler event="c:DataPassingFromFirstToSecondEvent" action="{!c.secondEvent}"/>
+    <div class="slds-m-around_xx-large">
+        <p>{!v.eventMessage}</p>
+    </div>
+</aura:component>

@@ -2,6 +2,9 @@
 
     <aura:attribute name="testRecords" type="String[]" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:registerEvent name="DataPassingFromFirstToSecondEvent" type="c:DataPassingFromFirstToSecondEvent"/>
+    <aura:registerEvent name="DataForDetails" type="c:DataForDetails"/>
     <br/> <br/>
     
     <div class="slds">
@@ -24,11 +27,11 @@
             <!-- Use the Apex model and controller to fetch server side data -->
               <aura:iteration items="{!v.testRecords}" var="test">
                 <tr>
-                  <td><div class="slds-truncate" title="{!test.Name__c}" data-target="{!test.Name}">{!test.Name__c}</div></td>
+                  <td><div class="slds-truncate" title="{!test.Name__c}">{!test.Name__c}</div></td>
                   <td><div class="slds-truncate" title="{!test.Surname__c}">{!test.Surname__c}</div></td>
                   <td>  <div class="slds-truncate">
                     <aura:iteration items="{!test.Education__r}" var="education">
-                       <p>{!education.Name}</p>
+                       <button data-id="{!test.Name}" onclick="{!c.educationEvent}">{!education.Name}</button>
                     </aura:iteration> </div>
                   </td>
                   <td>  <div class="slds-truncate">
@@ -48,4 +51,4 @@
     </div>
 
     
-</aura:component>	
+</aura:component>
