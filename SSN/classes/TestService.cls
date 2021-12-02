@@ -45,7 +45,7 @@ public with sharing class TestService {
                 return [
                         SELECT Id, Degree__c, Diploma__c, Higher_Secondary__c, Senior_Secondary__c 
                         FROM Education__c
-                        WHERE Test__c=:test
+                        WHERE Test__c :test
                 ]; */
 
                 Education__c e1 = new Education__c();
@@ -65,4 +65,28 @@ public with sharing class TestService {
 
                 return eList;
         }
+
+        @AuraEnabled(cacheable=true)
+        public static List<SObject> getTestRelatedInfo(String test, String type) {
+                if(type == 'Education'){
+                        return [
+                           SELECT Id, Degree__c, Diploma__c, Higher_Secondary__c, Senior_Secondary__c 
+                           FROM Education__c
+                           WHERE Test__r.Name = :test 
+                        ];
+                } else if( type == 'Jobs') {
+                        return [
+                           SELECT Id, Organization__r.Name__c, Designation__c 
+                           FROM Job__c 
+                           WHERE Test__r.Name = :test 
+                        ];
+                } else if ( type == 'Favs') {
+                        return [
+                           SELECT Id, Favorite_Id__r.Category__c, Favorite_Id__r.Name__c 
+                           FROM Test_N_Favorite__c
+                           WHERE Test_Id__r.Name = :test 
+                        ];
+                }
+                return null;
+        }        
     }
