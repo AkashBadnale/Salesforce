@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>send</masterLabel>
+    <isExposed>true</isExposed>
+    <description>send test id</description>
+     <lightningMessageFields>
+        <fieldName>mytestid</fieldName>
+        <description>this is the test id</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>columnDataType</fieldName>
+        <description>which data do you want. Like Education / Jobs / Favs</description>
+    </lightningMessageFields>
+</LightningMessageChannel>
