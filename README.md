@@ -7,7 +7,7 @@ Salesforce Beginner
 
 a simple query example  <b>`SELECT name__c, surname__c FROM Test__c`</b>
 
-a complicated query will look like below :
+a complicated query will look like below : </br>
 <b>
   `SELECT` </br>
      `Name__c,` </br>
@@ -20,7 +20,11 @@ a complicated query will look like below :
 </br>
 and this is how the result will look like, fetched records may be different based on the data present, just look at the column names
 
-![image](https://user-images.githubusercontent.com/39646462/143824551-bd1aa999-7019-493f-9a7f-5252a6a186d5.png)
+![image](https://user-images.githubusercontent.com/39646462/143824551-bd1aa999-7019-493f-9a7f-5252a6a186d5.png) </br>
+
+* Another relationship query according to the above excel declared custom objects : </br>
+  <b>`SELECT Organization__r.Name__c, Designation__c FROM Job__c WHERE Test__r.Name = 'T-0013'`</b> </br>
+
 
 
 
