@@ -1,6 +1,8 @@
 import { LightningElement, wire, track  } from 'lwc';
 import getTests from '@salesforce/apex/TestService.getTestsAndRelatedData';
 import getTestRelatedInformation from '@salesforce/apex/TestService.getTestRelatedInfo';
+import { publish, MessageContext } from 'lightning/messageService';
+import SEND_DATA_CHANNEL from '@salesforce/messageChannel/sendData__c';
 
 const columns = [
     { label: 'Name', fieldName: 'Name__c' },
@@ -32,6 +34,10 @@ const columns = [
 ];
 
 export default class GetAllTests extends LightningElement {
+
+    @wire(MessageContext)
+  messageContext;
+
     columns = columns;
     @track records;
     
@@ -43,12 +49,8 @@ export default class GetAllTests extends LightningElement {
          wiredTests({ error, data }) {
             //Check if data exists 
             if (data) {
-                this.records = data;
-                console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%');
-                console.log(data);
-                console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%');
-	              // eslint-disable-next-line no-console  
-                console.log(JSON.stringify(data));
+                this.records = data;  
+                //console.log(JSON.stringify(data));
             } else if (error) {
                 // eslint-disable-next-line no-console
                 console.log(error);
@@ -62,24 +64,29 @@ export default class GetAllTests extends LightningElement {
             const rowId =  event.detail.row.Name;  
             const actionName = event.detail.action.name;  
             
-            if ( actionName === 'Education' ) { 
-                this.testid = rowId;
-
-                /**  
-                this[NavigationMixin.Navigate]({  
-                    type: 'standard__recordPage',  
-                    attributes: {  
-                        recordId: rowId,  
-                        objectApiName: 'Account',  
-                        actionName: 'edit'  
-                    }  
-                })  */
-            } else if ( actionName === 'Jobs') {  
-                alert('Jobs Button Clicked'+rowId) 
+            if ( actionName === 'Education' ) 
+            { 
+                const payload = { 
+                    mytestid: rowId,
+                    columnDataType : 'Education'
+                };
+                publish(this.messageContext, SEND_DATA_CHANNEL, payload);
+            } 
+            else if ( actionName === 'Jobs') 
+            {  
+                const payload = { 
+                    mytestid: rowId,
+                    columnDataType : 'Jobs'
+                };
+                publish(this.messageContext, SEND_DATA_CHANNEL, payload); 
             }
             else if(actionName === 'Fav')
             {  
-                alert('Fav Button Clicked');
+                const payload = { 
+                    mytestid: rowId,
+                    columnDataType : 'Favs'
+                };
+                publish(this.messageContext, SEND_DATA_CHANNEL, payload);
             }
         }
 }
