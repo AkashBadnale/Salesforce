@@ -23,8 +23,21 @@ and this is how the result will look like, fetched records may be different base
 ![image](https://user-images.githubusercontent.com/39646462/143824551-bd1aa999-7019-493f-9a7f-5252a6a186d5.png) </br>
 
 * Another relationship query according to the above excel declared custom objects : </br>
-  <b>`SELECT Organization__r.Name__c, Designation__c FROM Job__c WHERE Test__r.Name = 'T-0013'`</b> </br>
-
+  <b>`SELECT Organization__r.Name__c, Designation__c`</br>
+	`FROM Job__c`</br> 
+	   `WHERE Test__r.Name = 'T-0013'`</b> </br>
+  
+  <b>`SELECT Id, Degree__c, Diploma__c, Higher_Secondary__c, Senior_Secondary__c ` </br>
+          `FROM Education__c` </br>
+             `WHERE Test__r.Name = :test `</b> </br>
+	   
+  <b>`SELECT Id, Organization__r.Name__c, Designation__c` </br>
+         `FROM Job__c` </br>
+           `WHERE Test__r.Name = :test`</b> </br>
+	   
+  <b> `SELECT Id, Favorite_Id__r.Category__c, Favorite_Id__r.Name__c` </br>
+                          `FROM Test_N_Favorite__c`</br>
+                           `WHERE Test_Id__r.Name = :test` </b></br>
 
 
 
