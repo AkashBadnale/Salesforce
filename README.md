@@ -3,7 +3,10 @@ Salesforce Beginner
 
 * Custom Object's Created For Learning & Development
 
-![image](https://user-images.githubusercontent.com/39646462/143823813-1df71673-4dda-463a-8851-45592acf66a7.png)
+ ** Child Relationship Names are very important for writing queries
+
+![image](https://user-images.githubusercontent.com/39646462/145045642-411dc057-2b3c-4246-9f63-b3f71580ac89.png)
+
 
 a simple query example  <b>`SELECT name__c, surname__c FROM Test__c`</b>
 
