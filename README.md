@@ -5,8 +5,7 @@ Salesforce Beginner
 
  ** Child Relationship Names are very important for writing queries
  
- ![Screenshot 2021-12-15 132101](https://user-images.githubusercontent.com/39646462/146145481-bfdfaaa0-79c2-4988-b1da-57d763815cde.png)
-
+![Screenshot 2021-12-15 132405](https://user-images.githubusercontent.com/39646462/146145865-a4518240-2924-45fc-9087-77f844dc0700.png)
 
 ![image](https://user-images.githubusercontent.com/39646462/145045642-411dc057-2b3c-4246-9f63-b3f71580ac89.png)
 
